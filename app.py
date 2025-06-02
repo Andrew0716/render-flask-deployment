@@ -4,7 +4,7 @@ from langchain.schema import AIMessage, HumanMessage, SystemMessage
 import os
 
 # API 키 설정
-os.environ["OPENAI_API_KEY"] = "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"  # 실제 키 사용
+os.environ["OPENAI_API_KEY"] = "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"  # 실제 키 사용
 
 app = Flask(__name__)
 app.secret_key = "your-secret-key"  # 세션 저장을 위한 키
