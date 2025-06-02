@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template, session
-from langchain_community.chat_models import ChatOpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
 import os
 
