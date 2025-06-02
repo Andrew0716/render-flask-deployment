@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAWVE - AI 법률 상담</title>
+  <script src="https://cdn.tailwindcss.com"></script> 
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <!-- 상단 네비게이션 -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">LAWVE</h1>
+      <nav class="space-x-6 text-sm">
+        <a href="#" class="hover:text-blue-500">법률 상담</a>
+        <a href="#" class="hover:text-blue-500">이용 약관</a>
+        <a href="#" class="hover:text-blue-500">개인정보처리방침</a>
+        <a href="#" class="hover:text-blue-500">고객 지원</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인 Hero 섹션 -->
+  <section class="max-w-6xl mx-auto px-4 py-16 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-4">
+      당신의 법률 상담, 쉽고 빠르게 해결
+    </h2>
+    <p class="text-lg mb-6">AI 법률 상담 서비스로 복잡한 문제를 간편하게 해결하세요.</p>
+    <div class="flex justify-center">
+      <input id="question" type="text" placeholder="법률 질문을 입력하세요" class="w-full max-w-xl px-4 py-2 border rounded-l-lg">
+      <button id="sendBtn" onclick="sendQuestion()" class="bg-blue-600 text-white px-4 py-2 rounded-r-lg">상담 시작</button>
+    </div>
+  </section>
+
+  <!-- 기능 소개 섹션 -->
+  <section class="bg-white py-12">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div>
+        <div class="text-4xl mb-2">💬</div>
+        <h3 class="font-semibold text-lg">쉽고 빠른 상담</h3>
+      </div>
+      <div>
+        <div class="text-4xl mb-2">🤖</div>
+        <h3 class="font-semibold text-lg">AI 법률 전문성</h3>
+      </div>
+      <div>
+        <div class="text-4xl mb-2">⚖️</div>
+        <h3 class="font-semibold text-lg">전문가 수준의 분석</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- 답변 출력 및 챗봇 인터페이스 -->
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="bg-gray-100 rounded-lg p-6">
+      <h4 class="font-bold mb-2">AI 답변</h4>
+      <div id="answer" class="text-gray-800 whitespace-pre-line"></div>
+    </div>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    async function sendQuestion() {
+      const question = document.getElementById("question").value;
+      const answerBox = document.getElementById("answer");
+      answerBox.innerText = "답변 생성 중...";
+
+      const response = await fetch("/ask", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question })
+      });
+
+      const data = await response.json();
+      answerBox.innerText = data.answer;
+    }
+
+    // Enter 키 누르면 버튼 클릭
+    document.getElementById("question").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault(); // 기본 제출 방지
+        document.getElementById("sendBtn").click();
+      }
+    });
+  </script>
+</body>
+</html>
