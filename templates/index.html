@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LAWVE - AI 법률 상담</title>
-  <script src="https://cdn.tailwindcss.com"></script> 
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900">
+
   <!-- 상단 네비게이션 -->
   <header class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -16,11 +17,13 @@
         <a href="#" class="hover:text-blue-500">이용 약관</a>
         <a href="#" class="hover:text-blue-500">개인정보처리방침</a>
         <a href="#" class="hover:text-blue-500">고객 지원</a>
+        <a href="#login" class="hover:text-blue-500">로그인</a>
+        <a href="#signup" class="hover:text-blue-500">회원가입</a>
       </nav>
     </div>
   </header>
 
-  <!-- 메인 Hero 섹션 -->
+  <!-- Hero Section -->
   <section class="max-w-6xl mx-auto px-4 py-16 text-center">
     <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-4">
       당신의 법률 상담, 쉽고 빠르게 해결
@@ -32,25 +35,16 @@
     </div>
   </section>
 
-  <!-- 기능 소개 섹션 -->
+  <!-- 기능 소개 -->
   <section class="bg-white py-12">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-      <div>
-        <div class="text-4xl mb-2">💬</div>
-        <h3 class="font-semibold text-lg">쉽고 빠른 상담</h3>
-      </div>
-      <div>
-        <div class="text-4xl mb-2">🤖</div>
-        <h3 class="font-semibold text-lg">AI 법률 전문성</h3>
-      </div>
-      <div>
-        <div class="text-4xl mb-2">⚖️</div>
-        <h3 class="font-semibold text-lg">전문가 수준의 분석</h3>
-      </div>
+      <div><div class="text-4xl mb-2">💬</div><h3 class="font-semibold text-lg">쉽고 빠른 상담</h3></div>
+      <div><div class="text-4xl mb-2">🤖</div><h3 class="font-semibold text-lg">AI 법률 전문성</h3></div>
+      <div><div class="text-4xl mb-2">⚖️</div><h3 class="font-semibold text-lg">전문가 수준의 분석</h3></div>
     </div>
   </section>
 
-  <!-- 답변 출력 및 챗봇 인터페이스 -->
+  <!-- 챗봇 인터페이스 -->
   <section class="max-w-6xl mx-auto px-4 py-12">
     <div class="bg-gray-100 rounded-lg p-6">
       <h4 class="font-bold mb-2">AI 답변</h4>
@@ -58,7 +52,39 @@
     </div>
   </section>
 
-  <!-- JavaScript -->
+  <!-- 로그인 섹션 -->
+  <section id="login" class="max-w-xl mx-auto px-4 py-12 bg-white rounded-lg shadow-md mt-10">
+    <h2 class="text-2xl font-bold text-center mb-6">로그인</h2>
+    <div class="space-y-4">
+      <button class="w-full bg-white border flex items-center justify-center gap-2 py-2 rounded shadow hover:bg-gray-100">
+        <img src="https://img.icons8.com/color/24/google-logo.png"/> 구글로 로그인
+      </button>
+      <button class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">
+        <img class="inline-block w-5 mr-2" src="https://img.icons8.com/color/24/naver.png"/> 네이버로 로그인
+      </button>
+      <button class="w-full bg-yellow-300 text-black py-2 rounded hover:bg-yellow-400">
+        <img class="inline-block w-5 mr-2" src="https://img.icons8.com/color/24/kakaotalk.png"/> 카카오로 로그인
+      </button>
+    </div>
+  </section>
+
+  <!-- 회원가입 섹션 -->
+  <section id="signup" class="max-w-xl mx-auto px-4 py-12 bg-white rounded-lg shadow-md mt-10 mb-16">
+    <h2 class="text-2xl font-bold text-center mb-6">회원가입</h2>
+    <div class="space-y-4">
+      <button class="w-full bg-white border flex items-center justify-center gap-2 py-2 rounded shadow hover:bg-gray-100">
+        <img src="https://img.icons8.com/color/24/google-logo.png"/> 구글로 회원가입
+      </button>
+      <button class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">
+        <img class="inline-block w-5 mr-2" src="https://img.icons8.com/color/24/naver.png"/> 네이버로 회원가입
+      </button>
+      <button class="w-full bg-yellow-300 text-black py-2 rounded hover:bg-yellow-400">
+        <img class="inline-block w-5 mr-2" src="https://img.icons8.com/color/24/kakaotalk.png"/> 카카오로 회원가입
+      </button>
+    </div>
+  </section>
+
+  <!-- JS -->
   <script>
     async function sendQuestion() {
       const question = document.getElementById("question").value;
@@ -77,13 +103,13 @@
       answerBox.innerText = data.answer;
     }
 
-    // Enter 키 누르면 버튼 클릭
     document.getElementById("question").addEventListener("keydown", function(event) {
       if (event.key === "Enter") {
-        event.preventDefault(); // 기본 제출 방지
+        event.preventDefault();
         document.getElementById("sendBtn").click();
       }
     });
   </script>
+
 </body>
 </html>
